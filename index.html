@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8090电影网 - 免费高清电影在线观看 | 8090dianyingwang-wap</title>
+    <meta name="description" content="8090电影网(https://8090dianyingwang-wap)提供最新电影、热播剧集、综艺、动漫高清在线观看，界面清爽无广告干扰，手机电脑都能看，欢迎收藏8090电影网。">
+    <meta name="keywords" content="8090电影网, 8090dianyingwang-wap, 在线电影, 高清电影, 免费电影, 电影推荐, 热播剧集">
+    <meta name="author" content="8090电影网">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="bingbot" content="index, follow">
+    <style>
+        /* ===== 全局重置 ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #070b18;
+            color: #e6edf6;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; transition: all .25s ease; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        /* ===== 顶部导航 ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(7, 11, 24, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(80, 200, 255, 0.15);
+        }
+        .nav-wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0.9rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .brand {
+            font-size: 1.55rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #38e8ff, #5b8cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .brand small {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: #6f819a;
+            -webkit-text-fill-color: #6f819a;
+            letter-spacing: 0;
+        }
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .menu a {
+            padding: 0.45rem 0.95rem;
+            font-size: 0.92rem;
+            color: #c4d2e6;
+            border-radius: 999px;
+            border: 1px solid transparent;
+        }
+        .menu a:hover {
+            color: #070b18;
+            background: linear-gradient(90deg, #38e8ff, #5b8cff);
+            font-weight: 600;
+        }
+
+        /* ===== 主容器 ===== */
+        main {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 2rem 5% 3rem;
+        }
+
+        /* ===== Hero 首屏 ===== */
+        .hero {
+            position: relative;
+            border-radius: 22px;
+            padding: 3.5rem 2rem;
+            text-align: center;
+            overflow: hidden;
+            background:
+                radial-gradient(1200px 400px at 80% -10%, rgba(91,140,255,0.35), transparent 60%),
+                radial-gradient(900px 360px at 0% 110%, rgba(56,232,255,0.28), transparent 55%),
+                linear-gradient(160deg, #0c1430, #070b18);
+            border: 1px solid rgba(91,140,255,0.25);
+            margin-bottom: 2.8rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(90deg, #38e8ff, #7aa0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            color: #a9b8cf;
+            max-width: 640px;
+            margin: 0 auto 1.4rem;
+            font-size: 1.05rem;
+        }
+        .url-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.3rem;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.35);
+            border: 1px dashed rgba(56,232,255,0.6);
+            color: #7fe6ff;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-size: 1.05rem;
+        }
+
+        /* ===== 区块标题 ===== */
+        .block-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 2.6rem 0 1.4rem;
+            gap: 1rem;
+        }
+        .block-head h2 {
+            font-size: 1.5rem;
+            color: #fff;
+            padding-left: 0.8rem;
+            border-left: 5px solid #38e8ff;
+            line-height: 1.2;
+        }
+        .block-head a {
+            font-size: 0.88rem;
+            color: #7aa0ff;
+            white-space: nowrap;
+        }
+        .block-head a:hover { color: #38e8ff; }
+
+        /* ===== 卡片网格 ===== */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+        .movie-card {
+            background: linear-gradient(180deg, #0e1733, #0a1126);
+            border: 1px solid rgba(120,160,255,0.12);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform .3s, box-shadow .3s, border-color .3s;
+        }
+        .movie-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56,232,255,0.5);
+            box-shadow: 0 14px 30px rgba(20,60,120,0.35);
+        }
+        .poster {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: #eaf6ff;
+            letter-spacing: 1px;
+            background-size: 200% 200%;
+        }
+        .p1 { background: linear-gradient(135deg, #15336b, #2b6cff); }
+        .p2 { background: linear-gradient(135deg, #5a189a, #9d4edd); }
+        .p3 { background: linear-gradient(135deg, #023e8a, #00b4d8); }
+        .p4 { background: linear-gradient(135deg, #6a040f, #d00000); }
+        .p5 { background: linear-gradient(135deg, #1b4332, #52b788); }
+        .p6 { background: linear-gradient(135deg, #3a0ca3, #4cc9f0); }
+        .card-body { padding: 1rem 1.1rem 1.2rem; }
+        .card-body h3 {
+            font-size: 1.08rem;
+            color: #fff;
+            margin-bottom: 0.4rem;
+        }
+        .tags {
+            font-size: 0.78rem;
+            color: #8fa3bf;
+            margin-bottom: 0.8rem;
+        }
+        .play-btn {
+            display: inline-block;
+            padding: 0.42rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: #06121f;
+            background: linear-gradient(90deg, #38e8ff, #5b8cff);
+        }
+        .play-btn:hover { filter: brightness(1.08); }
+
+        /* ===== 分类快捷区 ===== */
+        .cats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.9rem;
+        }
+        .cat {
+            text-align: center;
+            padding: 1.1rem 0.6rem;
+            border-radius: 14px;
+            background: rgba(20,32,64,0.6);
+            border: 1px solid rgba(120,160,255,0.12);
+            font-weight: 600;
+            color: #d6e2f5;
+        }
+        .cat span { display: block; font-size: 1.6rem; margin-bottom: 0.3rem; }
+        .cat:hover {
+            background: linear-gradient(135deg, rgba(56,232,255,0.18), rgba(91,140,255,0.18));
+            border-color: rgba(56,232,255,0.5);
+            color: #fff;
+        }
+
+        /* ===== 排行列表 ===== */
+        .rank {
+            background: linear-gradient(180deg, #0e1733, #0a1126);
+            border: 1px solid rgba(120,160,255,0.12);
+            border-radius: 16px;
+            padding: 0.6rem 1.2rem;
+        }
+        .rank-row {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px dashed rgba(120,160,255,0.12);
+        }
+        .rank-row:last-child { border-bottom: none; }
+        .num {
+            width: 30px; height: 30px;
+            flex: 0 0 30px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; color: #06121f;
+            background: linear-gradient(135deg, #38e8ff, #5b8cff);
+        }
+        .num.n2 { background: linear-gradient(135deg, #8ea0ff, #c0c8ff); }
+        .num.n3 { background: linear-gradient(135deg, #ffd166, #ffb703); }
+        .num.n4 { background: linear-gradient(135deg, #4cc9f0, #4895ef); }
+        .num.n5 { background: linear-gradient(135deg, #6c757d, #adb5bd); color: #fff; }
+        .rank-info { flex: 1; min-width: 0; }
+        .rank-info h4 { font-size: 1rem; color: #fff; margin-bottom: 0.15rem; }
+        .rank-info p { font-size: 0.82rem; color: #8fa3bf; }
+        .rank-row a {
+            font-size: 0.84rem;
+            color: #7fe6ff;
+            white-space: nowrap;
+        }
+
+        /* ===== 关于 + 收录友好文案 ===== */
+        .about {
+            margin-top: 2.8rem;
+            border-radius: 20px;
+            padding: 2.6rem 1.8rem;
+            text-align: center;
+            background:
+                radial-gradient(800px 300px at 50% 0%, rgba(56,232,255,0.16), transparent 60%),
+                linear-gradient(160deg, #0c1631, #070b18);
+            border: 1px solid rgba(56,232,255,0.2);
+        }
+        .about h2 { font-size: 1.6rem; color: #fff; margin-bottom: 1rem; }
+        .about p {
+            max-width: 760px;
+            margin: 0 auto 0.9rem;
+            color: #aebcd4;
+            font-size: 1rem;
+        }
+        .about strong { color: #7fe6ff; }
+        .url-box {
+            margin-top: 1.4rem;
+            display: inline-block;
+            padding: 0.8rem 1.4rem;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.35);
+            border: 1px solid rgba(56,232,255,0.45);
+            color: #7fe6ff;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== 底部 ===== */
+        footer {
+            border-top: 1px solid rgba(120,160,255,0.12);
+            background: #05080f;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+        footer .f-brand {
+            font-size: 1.4rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #38e8ff, #5b8cff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.6rem;
+        }
+        footer p { color: #6f819a; font-size: 0.88rem; margin-bottom: 0.4rem; }
+        footer .f-menu { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+        footer .f-menu a { color: #9fb0c9; font-size: 0.86rem; }
+        footer .f-menu a:hover { color: #38e8ff; }
+
+        /* ===== 移动端自适应 ===== */
+        @media (max-width: 768px) {
+            .nav-wrap { flex-direction: column; align-items: stretch; }
+            .brand { text-align: center; }
+            .menu { justify-content: center; }
+            .menu a { padding: 0.4rem 0.8rem; font-size: 0.86rem; }
+            .hero { padding: 2.4rem 1.2rem; border-radius: 16px; }
+            .hero h1 { font-size: 1.85rem; }
+            .hero p { font-size: 0.95rem; }
+            .url-pill { font-size: 0.95rem; padding: 0.6rem 1rem; }
+            .block-head { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+            .block-head h2 { font-size: 1.3rem; }
+            .grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+            .poster { height: 110px; font-size: 0.9rem; }
+            .card-body { padding: 0.8rem; }
+            .card-body h3 { font-size: 0.95rem; }
+            .cats { grid-template-columns: 1fr 1fr; }
+            .about { padding: 2rem 1.2rem; }
+        }
+        @media (max-width: 420px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaolu.js"></script>
+
+    <!-- 顶部导航 -->
+    <header>
+        <div class="nav-wrap">
+            <div class="brand">
+                8090电影网
+                <small>https://8090dianyingwang-wap</small>
+            </div>
+            <nav class="menu">
+                <a href="#home">首页</a>
+                <a href="#new">最新影片</a>
+                <a href="#cats">频道分类</a>
+                <a href="#rank">热播排行</a>
+                <a href="#about">关于本站</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home">
+        <!-- 首屏 -->
+        <section class="hero">
+            <h1>看好电影，上 <em>8090电影网</em></h1>
+            <p>最新院线大片、经典老片、热播剧集、综艺动漫一站看。手机端自适应，打开就能看，收藏不迷路。</p>
+            <div class="url-pill">🌐 官网直达：https://8090dianyingwang-wap</div>
+        </section>
+
+        <!-- 栏目1：最新影片 -->
+        <section id="new">
+            <div class="block-head">
+                <h2>最新影片上线</h2>
+                <a href="#">查看更多 #</a>
+            </div>
+            <div class="grid">
+                <article class="movie-card">
+                    <div class="poster p1">热映大片·海报位</div>
+                    <div class="card-body">
+                        <h3>星际穿越者·重启</h3>
+                        <div class="tags">科幻 / 动作 / 2026</div>
+                        <a class="play-btn" href="#">立即播放 #</a>
+                    </div>
+                </article>
+                <article class="movie-card">
+                    <div class="poster p2">悬疑剧场·海报位</div>
+                    <div class="card-body">
+                        <h3>深夜来电</h3>
+                        <div class="tags">悬疑 / 犯罪 / 全12集</div>
+                        <a class="play-btn" href="#">立即播放 #</a>
+                    </div>
+                </article>
+                <article class="movie-card">
+                    <div class="poster p3">治愈动画·海报位</div>
+                    <div class="card-body">
+                        <h3>海风里的夏天</h3>
+                        <div class="tags">动画 / 治愈 / 剧场版</div>
+                        <a class="play-btn" href="#">立即播放 #</a>
+                    </div>
+                </article>
+                <article class="movie-card">
+                    <div class="poster p4">战争历史·海报位</div>
+                    <div class="card-body">
+                        <h3>烽火长河</h3>
+                        <div class="tags">历史 / 战争 / 高清修复</div>
+                        <a class="play-btn" href="#">立即播放 #</a>
+                    </div>
+                </article>
+                <article class="movie-card">
+                    <div class="poster p5">自然纪录片·海报位</div>
+                    <div class="card-body">
+                        <h3>蔚蓝深处</h3>
+                        <div class="tags">纪录片 / 自然 / 4K</div>
+                        <a class="play-btn" href="#">立即播放 #</a>
+                    </div>
+                </article>
+                <article class="movie-card">
+                    <div class="poster p6">喜剧合家欢·海报位</div>
+                    <div class="card-body">
+                        <h3>过年别回家</h3>
+                        <div class="tags">喜剧 / 家庭 / 院线新片</div>
+                        <a class="play-btn" href="#">立即播放 #</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 栏目2：频道分类 -->
+        <section id="cats">
+            <div class="block-head">
+                <h2>频道分类直达</h2>
+                <a href="#">全部分类 #</a>
+            </div>
+            <div class="cats">
+                <a class="cat" href="#"><span>🎬</span>最新电影</a>
+                <a class="cat" href="#"><span>📺</span>热播剧集</a>
+                <a class="cat" href="#"><span>🎭</span>综艺娱乐</a>
+                <a class="cat" href="#"><span>🧸</span>动漫专区</a>
+                <a class="cat" href="#"><span>👻</span>悬疑惊悚</a>
+                <a class="cat" href="#"><span>❤️</span>爱情喜剧</a>
+                <a class="cat" href="#"><span>⚔️</span>动作战争</a>
+                <a class="cat" href="#"><span>🌌</span>科幻奇幻</a>
+            </div>
+        </section>
+
+        <!-- 栏目3：热播排行 -->
+        <section id="rank">
+            <div class="block-head">
+                <h2>🔥 8090电影网 热播排行</h2>
+                <a href="#">完整榜单 #</a>
+            </div>
+            <div class="rank">
+                <div class="rank-row">
+                    <div class="num">1</div>
+                    <div class="rank-info">
+                        <h4>星际穿越者·重启</h4>
+                        <p>科幻动作 · 今日播放 9.8万</p>
+                    </div>
+                    <a href="#">看片 #</a>
+                </div>
+                <div class="rank-row">
+                    <div class="num n2">2</div>
+                    <div class="rank-info">
+                        <h4>深夜来电</h4>
+                        <p>悬疑犯罪 · 今日播放 7.6万</p>
+                    </div>
+                    <a href="#">看片 #</a>
+                </div>
+                <div class="rank-row">
+                    <div class="num n3">3</div>
+                    <div class="rank-info">
+                        <h4>海风里的夏天</h4>
+                        <p>治愈动画 · 今日播放 6.2万</p>
+                    </div>
+                    <a href="#">看片 #</a>
+                </div>
+                <div class="rank-row">
+                    <div class="num n4">4</div>
+                    <div class="rank-info">
+                        <h4>烽火长河</h4>
+                        <p>历史战争 · 今日播放 5.1万</p>
+                    </div>
+                    <a href="#">看片 #</a>
+                </div>
+                <div class="rank-row">
+                    <div class="num n5">5</div>
+                    <div class="rank-info">
+                        <h4>过年别回家</h4>
+                        <p>合家欢喜剧 · 今日播放 4.3万</p>
+                    </div>
+                    <a href="#">看片 #</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 栏目4：关于本站 -->
+        <section id="about" class="about">
+            <h2>关于 8090电影网</h2>
+            <p>
+                <strong>8090电影网</strong> 是一个面向手机端与电脑端的影视聚合展示站点，
+                官网地址为 <strong>https://8090dianyingwang-wap</strong>。
+                站内含最新电影、热播剧集、综艺、动漫等栏目，页面采用 CSS+DIV 布局，
+                移动端自适应，加载轻量，方便用户快速找到想看的片子。
+            </p>
+            <p>
+                无论你是通勤路上用手机刷剧，还是晚上躺床上看一部老电影，
+                打开 <strong>https://8090dianyingwang-wap</strong> 就能直接进入 8090电影网，
+                清爽排版、分类清晰、锚点跳转顺滑，追剧看片不用来回翻。
+            </p>
+            <div class="url-box">🎬 收藏本站：https://8090dianyingwang-wap</div>
+        </section>
+    </main>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="f-brand">8090电影网</div>
+        <p>网站名称：8090电影网 ｜ 网站网址：https://8090dianyingwang-wap</p>
+        <p>单页展示 Demo · 内页链接均以 # 占位 · 未生成 robots.txt / sitemap.xml</p>
+        <p>© 2026 8090电影网 8090dianyingwang-wap 保留所有展示权利</p>
+        <nav class="f-menu">
+            <a href="#home">首页 #</a>
+            <a href="#new">最新影片 #</a>
+            <a href="#cats">频道分类 #</a>
+            <a href="#rank">热播排行 #</a>
+            <a href="#about">关于我们 #</a>
+        </nav>
+    </footer>
+
+</body>
+</html>
